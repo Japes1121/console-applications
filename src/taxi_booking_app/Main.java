@@ -1,4 +1,4 @@
-package taxiBookingApp;
+package taxi_booking_app;
 
 import java.util.Scanner;
 
@@ -16,12 +16,12 @@ public class Main {
 		System.out.println("Enter Number of Bookings : ");
 		int noOfBookings = input.nextInt();
 		int custId,pickupTime;
-		String from,to;
+		char from,to;
 		System.out.println(" Enter Values one by one 'Customer Id' 'From' 'To' 'Pickup Time'");
 		for(int i=0;i<noOfBookings ; i++){
 			custId = input.nextInt();
-			from = input.next();
-			to = input.next();
+			from = input.next().charAt(0);
+			to = input.next().charAt(0);
 			pickupTime = input.nextInt();
 			
 			int taxi=bt.bookTaxi(custId, from, to, pickupTime);

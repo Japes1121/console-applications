@@ -1,12 +1,12 @@
-package taxiBookingApp;
+package taxi_booking_app;
 
 public class TaxiEarningsDAO {
 
 	private int bookingId;
 	private int customerId;
 	private int taxi;
-	private String startPoint;
-	private String endPoint;
+	private char startPoint;
+	private char endPoint;
 	private int pickupTime;
 	private int dropTime;
 	private int fareAmount;
@@ -14,8 +14,8 @@ public class TaxiEarningsDAO {
 	public int getBookingId() {
 		return bookingId;
 	}
-	public void setBookingId(int bookingId) {
-		this.bookingId = bookingId;
+	public void setBookingId() {
+		this.bookingId = bookingId+1;
 	}
 	public int getCustomerId() {
 		return customerId;
@@ -29,16 +29,16 @@ public class TaxiEarningsDAO {
 	public void setTaxi(int taxi) {
 		this.taxi = taxi;
 	}
-	public String getStartPoint() {
+	public char getStartPoint() {
 		return startPoint;
 	}
-	public void setStartPoint(String startPoint) {
+	public void setStartPoint(char startPoint) {
 		this.startPoint = startPoint;
 	}
-	public String getEndPoint() {
+	public char getEndPoint() {
 		return endPoint;
 	}
-	public void setEndPoint(String endPoint) {
+	public void setEndPoint(char endPoint) {
 		this.endPoint = endPoint;
 	}
 	public int getPickupTime() {

@@ -1,4 +1,4 @@
-package taxiBookingApp;
+package taxi_booking_app;
 
 import java.util.ArrayList;
 import java.util.Collection;

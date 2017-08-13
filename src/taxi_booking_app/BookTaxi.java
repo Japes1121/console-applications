@@ -1,7 +1,6 @@
-package taxiBookingApp;
+package taxi_booking_app;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
@@ -11,13 +10,13 @@ public class BookTaxi implements Properties {
 
 	private static HashMap<Integer,TaxiAppDAO> taxiStatus=new HashMap<>();
 	private static HashMap<Integer,List<TaxiEarningsDAO>> taxiEarnings=new HashMap<>();
-	private static int bookingId=0;
+
 	
 	public void initialTaxiStatus(){
 		for(int i=0;i<Properties.taxi.length;i++){
 			TaxiAppDAO taxi=new TaxiAppDAO();
 			taxi.setBooked(false);
-			taxi.setCurrentStop("Thiruporur");
+			taxi.setCurrentStop('A');
 			taxi.setTaxi(Properties.taxi[i]);
 			taxiStatus.put(taxi.getTaxi(),taxi);
 		}
@@ -59,7 +58,7 @@ public class BookTaxi implements Properties {
 		}
 	}
 	
-	public int bookTaxi(int custId, String pickupPoint, String dropPoint, int pickupTime){
+	public int bookTaxi(int custId, char pickupPoint, char dropPoint, int pickupTime){
 		List<TaxiEarningsDAO> teDAO;
 		List<int[]> freeTaxiList=new ArrayList<>();
 		int source,dest,earnings=0,distance;
@@ -124,8 +123,7 @@ public class BookTaxi implements Properties {
 					tedao.setCustomerId(custId);
 					tedao.setStartPoint(pickupPoint);
 					tedao.setEndPoint(dropPoint);
-					bookingId = bookingId +1;
-					tedao.setBookingId(bookingId);
+					tedao.setBookingId();
 					tedao.setPickupTime(pickupTime);
 					tedao.setFareAmount(calculateFare(pickupPoint, dropPoint)[0]);
 					tedao.setDropTime((pickupTime+calculateFare(pickupPoint, dropPoint)[1]));
@@ -144,7 +142,7 @@ public class BookTaxi implements Properties {
 				taxi = tas[0];
 				minDist = tas[1];
 				firstMinFareFlag=false;
-			}else if(tas[1] > 0 && tas[2]==0 && (minDistFlag == true || minDist < tas[1])){
+			}else if(tas[1] > 0 && tas[2]==0 && (minDistFlag == true || minDist <= tas[1])){
 				minDistFlag=false;
 				minFare=tas[2];
 				taxi = tas[0];
@@ -174,8 +172,7 @@ public class BookTaxi implements Properties {
 			tedao.setCustomerId(custId);
 			tedao.setStartPoint(pickupPoint);
 			tedao.setEndPoint(dropPoint);
-			bookingId = bookingId +1;
-			tedao.setBookingId(bookingId);
+			tedao.setBookingId();
 			tedao.setPickupTime(pickupTime);
 			tedao.setFareAmount(calculateFare(pickupPoint, dropPoint)[0]);
 			tedao.setDropTime((pickupTime+calculateFare(pickupPoint, dropPoint)[1]));
@@ -193,13 +190,12 @@ public class BookTaxi implements Properties {
 		
 	}
 	
-	public int[] calculateFare(String pickupPoint,String dropPoint){
+	public int[] calculateFare(char pickupPoint,char dropPoint){
 		//Drop time and fare calculation
 		int[] out=new int[2];
 		int fare=0;
-		
-		int startIndex=Arrays.asList(endPoints).indexOf(pickupPoint);
-		int endIndex=Arrays.asList(endPoints).indexOf(dropPoint);
+		int startIndex=new String(Properties.endPoints1).indexOf(pickupPoint);
+		int endIndex=new String(Properties.endPoints1).indexOf(dropPoint);
 		
 		int distance=Math.abs(((endIndex-startIndex)*15))-5;
 		fare=100+distance*10;

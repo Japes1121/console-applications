@@ -1,9 +1,9 @@
-package taxiBookingApp;
+package taxi_booking_app;
 
 public class TaxiAppDAO {
 
 	private int taxi;
-	private String currentStop;
+	private char currentStop;
 	private boolean isBooked;
 	private int pickupTime;
 	private int freeTime;
@@ -28,10 +28,10 @@ public class TaxiAppDAO {
 	public void setTaxi(int taxi) {
 		this.taxi = taxi;
 	}
-	public String getCurrentStop() {
+	public char getCurrentStop() {
 		return currentStop;
 	}
-	public void setCurrentStop(String currentStop) {
+	public void setCurrentStop(char currentStop) {
 		this.currentStop = currentStop;
 	}
 	public boolean isBooked() {

@@ -1,4 +1,4 @@
-package taxiBookingApp;
+package taxi_booking_app;
 
 
 public class Executor {
@@ -10,42 +10,42 @@ public class Executor {
 		bt.initialTaxiStatus();
 		bt.print();
 		
-		int stat=bt.bookTaxi(1, "Thiruporur", "Kelambakkam", 9);
+		int stat=bt.bookTaxi(1, 'A', 'B', 9);
 		if(stat>0){
 			System.out.println("Taxi-"+stat+" allotted");
 		}else{
 			System.out.println("Booking Rejected! No taxi's available");
 		}
 		
-		stat=bt.bookTaxi(2, "Kelambakkam","Tidal", 9);
+		stat=bt.bookTaxi(2, 'B', 'D', 9);
 		if(stat>0){
 			System.out.println("Taxi-"+stat+" allotted");
 		}else{
 			System.out.println("Booking Rejected! No taxi's available");
 		}
 
-		stat=bt.bookTaxi(3, "Sholinganallur","Tidal", 12);
+		stat=bt.bookTaxi(3, 'B', 'C', 12);
 		if(stat>0){
 			System.out.println("Taxi-"+stat+" allotted");
 		}else{
 			System.out.println("Booking Rejected! No taxi's available");
 		}
 		
-		stat=bt.bookTaxi(4, "Thiruporur","Thoraipakkam", 12);
+		stat=bt.bookTaxi(4, 'A', 'C', 12);
 		if(stat>0){
 			System.out.println("Taxi-"+stat+" allotted");
 		}else{
 			System.out.println("Booking Rejected! No taxi's available");
 		}
 		
-		stat=bt.bookTaxi(5, "Navalur","Tidal", 9);
+		stat=bt.bookTaxi(5, 'B', 'C', 9);
 		if(stat>0){
 			System.out.println("Taxi-"+stat+" allotted");
 		}else{
 			System.out.println("Booking Rejected! No taxi's available");
 		}
 		
-		stat=bt.bookTaxi(5, "Thiruporur","Thoraipakkam", 13);
+		stat=bt.bookTaxi(5, 'B', 'C', 13);
 		if(stat>0){
 			System.out.println("Taxi-"+stat+" allotted");
 		}else{
